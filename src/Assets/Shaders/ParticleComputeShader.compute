@@ -39,9 +39,9 @@ void init(uint id)
     // 速度は、半球状に乱数を広げる
     float3 r3 = rand3(seed * 2);
     float3 vel;
-    vel.x = 3 * r3.x * cos(r3.z * 0.5 * 3.1415) * cos(r3.y * 2.0 * 3.141592);
-    vel.z = 3 * r3.x * cos(r3.z * 0.5 * 3.1415) * sin(r3.y * 2.0 * 3.141592);    
-    vel.y = 5 * r3.x * sin(r3.z * 0.5 * 3.1415) + 5.0;
+    vel.x = 53 * r3.x * cos(r3.z * 0.5 * 3.1415) * cos(r3.y * 2.0 * 3.141592);
+    vel.z = 53 * r3.x * cos(r3.z * 0.5 * 3.1415) * sin(r3.y * 2.0 * 3.141592);
+    vel.y = 33 * r3.x * sin(r3.z * 0.5 * 3.1415) + 5.0;
 
 
     Particles[id].pos = pos;
@@ -71,7 +71,7 @@ void update(uint3 id :SV_DispatchThreadID)
     }
 
     // 陽オイラー
-    pos += vel * deltaTime;
+    pos += vel * deltaTime*0.5;
     vel.y -= 9.8 * deltaTime;
 
     // 値の格納
